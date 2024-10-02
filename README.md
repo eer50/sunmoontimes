@@ -9,8 +9,9 @@ see live demo: https://eer50.github.io/sunmoontimes/
     var timezone = 3; // Set timezone offset
     var date = new Date(); // Set the date
     var timeformat = "12h"; // Set timeFormat
-    
-    var sunMoonTimes = new Main(latitude, longitude, timezone, date, timeformat); // Create an instance of Main
+
+    // Create an instance of Main
+    var sunMoonTimes = new Main(latitude, longitude, timezone, date, timeformat);
     
     // Accessing the times after execution
     document.write("Sunrise:", sunMoonTimes.sunrise, "<br>");
