@@ -1,6 +1,10 @@
 # SunMoonTimes
 A JavaScript library to calculate sunrise, sunset, moonrise, moonset and twilight times based on latitude, longitude, date, and timezone.  
 see live demo: https://eer50.github.io/sunmoontimes/
+
+## Demo
+You can check out a live demo of the library [here](https://eer50.github.io/sunmoontimes/).
+
 ## Example Usage
 ```
     // Call Main with desired values
@@ -32,3 +36,9 @@ Here are the available time formats:
 | 24h    | 24-hour time format            | 16:45    |
 | 12h    | 12-hour time format            | 4:45 pm  |
 | 12hNS  | 12-hour format with no suffix  | 4:45     |
+
+## Credits
+The original functions were adapted from http://hinch.me.uk/riset.html.
+
+## License
+This project is licensed under the ISC License.
