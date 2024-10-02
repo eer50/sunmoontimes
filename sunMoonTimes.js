@@ -447,6 +447,3 @@ function find_moonrise_set(mjd, tz, glong, glat) {
 
     return moonTimes; // Return the object with moon times
 }
-
-// export
-module.exports = PrayTimes;
