@@ -25,3 +25,10 @@ see live demo: https://eer50.github.io/sunmoontimes/
     document.write("Moonrise:", sunMoonTimes.moonrise, "<br>");
     document.write("Moonset:", sunMoonTimes.moonset);
 ```
+### Time Formats  
+Here are the available time formats:
+| Format | Description                    | Example  |
+|--------|--------------------------------|----------|
+| 24h    | 24-hour time format            | 16:45    |
+| 12h    | 12-hour time format            | 4:45 pm  |
+| 12hNS  | 12-hour format with no suffix  | 4:45     |
