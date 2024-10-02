@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun and Moon Times</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .form-row div {
+            flex: 1;
+            min-width: 150px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        @media (max-width: 600px) {
+            table, th, td {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-row">
+            <div>
+                <label for="latitude">Latitude</label>
+                <input type="number" id="latitude" name="latitude" step="any">
+            </div>
+            <div>
+                <label for="longitude">Longitude</label>
+                <input type="number" id="longitude" name="longitude" step="any">
+            </div>
+            <div>
+                <label for="timezone">Timezone</label>
+                <select id="timezone" name="timezone">
+                    <option value="-12">UTC-12</option>
+                    <option value="-11">UTC-11</option>
+                    <option value="-10">UTC-10</option>
+                    <option value="-9">UTC-9</option>
+                    <option value="-8">UTC-8</option>
+                    <option value="-7">UTC-7</option>
+                    <option value="-6">UTC-6</option>
+                    <option value="-5">UTC-5</option>
+                    <option value="-4">UTC-4</option>
+                    <option value="-3">UTC-3</option>
+                    <option value="-2">UTC-2</option>
+                    <option value="-1">UTC-1</option>
+                    <option value="0">UTC 0 (GMT)</option>
+                    <option value="+1">UTC+1</option>
+                    <option value="+2">UTC+2</option>
+                    <option value="+3">UTC+3</option>
+                    <option value="+4">UTC+4</option>
+                    <option value="+5">UTC+5</option>
+                    <option value="+6">UTC+6</option>
+                    <option value="+7">UTC+7</option>
+                    <option value="+8">UTC+8</option>
+                    <option value="+9">UTC+9</option>
+                    <option value="+10">UTC+10</option>
+                    <option value="+11">UTC+11</option>
+                    <option value="+12">UTC+12</option>
+                    <option value="+13">UTC+13</option>
+                    <option value="+14">UTC+14</option>
+                </select>
+            </div>
+            <div>
+                <label for="time-format">Time Format</label>
+                <select id="time-format" name="time-format">
+                    <option value="24h">24-hour</option>
+                    <option value="12h">12-hour</option>
+                    <option value="12hNS">12-hour no suffix</option>
+                </select>
+            </div>
+            <div>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <div>
+                <button type="button" onclick="calculateTime()">Calculate</button>
+            </div>
+        </div>
+    </div>
+
+    <table id="sunMoonTimesTable">
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sunrise</td>
+                <td id="sunrise"></td>
+            </tr>
+            <tr>
+                <td>Sunset</td>
+                <td id="sunset"></td>
+            </tr>
+            <tr>
+                <td>Civil Twilight Begin</td>
+                <td id="civilTwilightBegin"></td>
+            </tr>
+            <tr>
+                <td>Civil Twilight End</td>
+                <td id="civilTwilightEnd"></td>
+            </tr>
+            <tr>
+                <td>Nautical Twilight Begin</td>
+                <td id="nauticalTwilightBegin"></td>
+            </tr>
+            <tr>
+                <td>Nautical Twilight End</td>
+                <td id="nauticalTwilightEnd"></td>
+            </tr>
+            <tr>
+                <td>Astronomical Twilight Begin</td>
+                <td id="astronomicalTwilightBegin"></td>
+            </tr>
+            <tr>
+                <td>Astronomical Twilight End</td>
+                <td id="astronomicalTwilightEnd"></td>
+            </tr>
+            <tr>
+                <td>Moonrise</td>
+                <td id="moonrise"></td>
+            </tr>
+            <tr>
+                <td>Moonset</td>
+                <td id="moonset"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="sunMoonTimes.js"></script>
+    <script>
+        function calculateTime() {
+            // Call Main with desired values
+            var latitude = document.getElementById("latitude").value; // Set latitude
+            var longitude = document.getElementById("longitude").value; // Set longitude
+            var timezone = document.getElementById("timezone").value; // Set timezone offset
+            var inputdate = document.getElementById("date").value;
+            var date = new Date(inputdate); // Set the date
+            var timeformat = document.getElementById("time-format").value; // Set timeFormat
+
+            var sunMoonTimes = new Main(latitude, longitude, timezone, date, timeformat); // Create an instance of Main
+
+
+            document.getElementById("sunrise").textContent = sunMoonTimes.sunrise;
+            document.getElementById("sunset").textContent = sunMoonTimes.sunset;
+            document.getElementById("civilTwilightBegin").textContent = sunMoonTimes.civilTwilightBegin;
+            document.getElementById("civilTwilightEnd").textContent = sunMoonTimes.civilTwilightEnd;
+            document.getElementById("nauticalTwilightBegin").textContent = sunMoonTimes.nauticalTwilightBegin;
+            document.getElementById("nauticalTwilightEnd").textContent = sunMoonTimes.nauticalTwilightEnd;
+            document.getElementById("astronomicalTwilightBegin").textContent = sunMoonTimes.astronomicalTwilightBegin;
+            document.getElementById("astronomicalTwilightEnd").textContent = sunMoonTimes.astronomicalTwilightEnd;
+            document.getElementById("moonrise").textContent = sunMoonTimes.moonrise;
+            document.getElementById("moonset").textContent = sunMoonTimes.moonset;
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+        // Set the current date as the default value for the date input
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;
+
+        // Set the timezone select to the user's current timezone
+        const timezoneSelect = document.getElementById('timezone');
+        const timezoneOffset = -new Date().getTimezoneOffset() / 60;
+        const timezoneOption = Array.from(timezoneSelect.options).find(option => parseFloat(option.value) === timezoneOffset);
+        if (timezoneOption) {
+            timezoneOption.selected = true;
+        }
+
+        // Set the latitude and longitude using Geolocation API
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                document.getElementById('latitude').value = position.coords.latitude;
+                document.getElementById('longitude').value = position.coords.longitude;
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    });
+    </script>
+</body>
+</html>
