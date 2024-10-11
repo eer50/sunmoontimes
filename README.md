@@ -4,6 +4,19 @@ A JavaScript library to calculate sunrise, sunset, moonrise, moonset and twiligh
 ## Demo
 You can check out a live demo of the library [here](https://eer50.github.io/sunmoontimes/).
 
+## Installation
+You can include it directly in your HTML file using a CDN:
+
+### Using jsDelivr
+```
+<script src="https://cdn.jsdelivr.net/npm/sunmoontimes"></script>
+```
+
+### Using unpkg
+```
+<script src="https://unpkg.com/sunmoontimes"></script>
+```
+
 ## Example Usage
 ```
     // Call Main with desired values
