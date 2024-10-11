@@ -7,12 +7,12 @@ You can check out a live demo of the library [here](https://eer50.github.io/sunm
 ## Installation
 You can include it directly in your HTML file using a CDN:
 
-#### Using jsDelivr
+### Using jsDelivr
 ```
 <script src="https://cdn.jsdelivr.net/npm/sunmoontimes"></script>
 ```
 
-#### Using unpkg
+### Using unpkg
 ```
 <script src="https://unpkg.com/sunmoontimes"></script>
 ```
